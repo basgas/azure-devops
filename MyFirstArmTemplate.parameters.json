@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "customername": {
-            "value": "bla"
+            "value": "DevOpsDemo"
         }
     }
 }

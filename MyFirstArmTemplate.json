@@ -7,12 +7,52 @@
             "metadata": {
                 "description": "Customer Name"
             }
+        },
+        "environment": {
+            "allowedValues": [
+                "dev",
+                "tst",
+                "prd"
+            ],
+            "defaultValue": "dev",
+            "type": "string",
+            "metadata": {
+                "description": "Environment"
+            }
         }
     },
-    "variables": {},
-    "resources": [],
+    "variables": {
+              "storagename": "[toLower(uniqueString(parameters('customername'), 'sto'))]",
+              "envsettings":{"dev": {"copies":1, "accountType": "Standard_LRS"},
+                            "tst": {"copies":1, "accountType": "Standard_LRS"},
+                            "prd": {"copies":3, "accountType": "Standard_LRS"}
+                            }
+    },
+    "resources": [
+              {
+                  "copy": {
+                      "name": "Sttorageaccounts",
+                      "count": "[variables('envsettings')[parameters('environment')].copies]"
+                  },
+                  "type": "Microsoft.Storage/storageAccounts",
+                  "apiVersion": "2015-06-15",
+                  "location": "westeurope",
+                  "name": "[concat(variables('storagename'), copyIndex())]",
+                  "tags": {
+                      "Company": "Art of Shell LLC",
+                      "Website": "https://artofshell.com"
+                  },
+                  "properties": {
+                      "accountType": "[variables('envsettings')[parameters('environment')].accountType]"
+                  }
+              }
+    ],
     "outputs": {
         "customername": {"type": "string",
-            "value": "[concat('hello, ', parameters('customername'))]"}
+            "value": "[concat('hello, ', parameters('customername'))]"},
+        "storageAccountKeys": {
+            "type": "object",
+            "value": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('storagename')), '2018-07-01')]"
+        }
     }
 }
