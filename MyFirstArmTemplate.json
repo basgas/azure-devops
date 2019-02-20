@@ -25,7 +25,7 @@
               "storagename": "[toLower(uniqueString(parameters('customername'), 'sto'))]",
               "envsettings":{"dev": {"copies":1, "accountType": "Standard_LRS"},
                             "tst": {"copies":1, "accountType": "Standard_LRS"},
-                            "prd": {"copies":3, "accountType": "Standard_LRS"}
+                            "prd": {"copies":3, "accountType": "Standard_GRS"}
                             }
     },
     "resources": [
