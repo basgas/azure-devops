@@ -30,7 +30,7 @@
             "properties":{
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "https://raw.githubusercontent.com/basgas/azure-devops/master/%20CustomerSharedServices.json"
+                    "uri": "https://raw.githubusercontent.com/basgas/azure-devops/master/CustomerSharedServices.json"
                 }
             }
         },
@@ -41,7 +41,7 @@
             "properties":{
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "https://raw.githubusercontent.com/basgas/azure-devops/master/%20CustomerEnvironment.json"
+                    "uri": "https://raw.githubusercontent.com/basgas/azure-devops/master/CustomerEnvironment.json"
                 }
             }
         }
