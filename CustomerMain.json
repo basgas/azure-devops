@@ -22,6 +22,29 @@
         }
     },
     "variables": {},
-    "resources": [],
+    "resources": [
+        {
+            "name": "SharedService",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2018-05-01",
+            "properties":{
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "https://raw.githubusercontent.com/basgas/azure-devops/master/%20CustomerSharedServices.json"
+                }
+            }
+        },
+        {
+            "name": "Environment",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2018-05-01",
+            "properties":{
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "https://raw.githubusercontent.com/basgas/azure-devops/master/%20CustomerEnvironment.json"
+                }
+            }
+        }
+    ],
     "outputs": {}
 }
